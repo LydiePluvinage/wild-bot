@@ -32,22 +32,44 @@ client.on('ready', () => {
 client.on('interactionCreate', async (interaction) => {
   if (!interaction.isCommand()) return;
 
-  /*const command = client.api
-    .applications(client.user.id)
-    .guilds('885798729859358742')
-    .commands.filter((name) => (name = interaction.commandName));
-
-  if (!command) return;*/
-
   try {
     switch (interaction.commandName) {
       case 'git':
-        await interaction.reply(
-          `Bah alors ${interaction.member.displayName}, t'as cru que j'allais te montrer mon git ?`
-        );
+        await interaction.reply(`Voici les principales commandes git :\n
+        **git init** : Indique à git que ce dossier va être suivi. Utile uniquement à la création d'un nouveau projet
+        **git remote add origin *chemin*** : Lie un dossier à un repository git. Utile uniquement à la création d'un nouveau projet ou lors de recréation de repo
+        **git clone *chemin*** : Crée un répertoire et récupère l'intégralité du repository. A faire suivre par npm install
+        **git status** : Affiche les fichiers mis à jour depuis le dernier commit
+        **git add .** : Ajoute toutes les modifications disponible à la liste à commit
+        **git commit -m *message*** : Commit les modifications sur git.
+        **git checkout -b *nomBranche*** : Crée une branche et se déplace dessus
+        **git checkout *nomBranche*** : Se déplace sur la branche
+        **git push origin *nomBranche*** : Envoie les modifications sur github
+        **git fetch --all** : Récupère toutes les branches du repository
+        **git reset --hard origin *nomBranche*** : Annule toutes les modifications effectuées sur la branche. Tout code en attente de commit sera perdu.
+        **git log --oneline** : Affiche la liste des commit
+        Pour en savoir plus : **https://www.atlassian.com/dam/jcr:e7e22f25-bba2-4ef1-a197-53f46b6df4a5/SWTM-2088_Atlassian-Git-Cheatsheet.pdf**
+        `);
         break;
       case 'npm':
-        await interaction.reply(`https://devhints.io/npm`);
+        await interaction.reply(`Voici les principales commandes NPM :\n
+        **npm init** : Initialise le projet. Génère le package.json
+        **npm install** : Installe les dépendances du projet. Génère le dossier node_modules. A faire après chaque git clone
+        **npm install --save-dev *packageName*** : Installe le package en dépendance de développement et test
+        **npm install -g *packageName*** : Installe le package en global. A faire quand le package va être utilisé partout
+        **npm list -g --depth 0** : Affiche la liste des packages installés en global sur la machine
+        **npm start** : Lance le script *start* défini dans la partie scripts de package.json
+        **npm run *scriptName*** : Lance le script défini dans la partie scripts de package.json
+        Pour en savoir plus : **https://devhints.io/npm**
+        `);
+        break;
+      case 'pointage':
+        await interaction.reply('@everyone on pointe svp !');
+        break;
+      case 'remote':
+        await interaction.reply(
+          'Voici le lien pour le remote : https://meet.google.com/jjn-kvnb-nrc?authuser=0'
+        );
         break;
       default:
         break;
@@ -60,27 +82,6 @@ client.on('interactionCreate', async (interaction) => {
     });
   }
 });
-
-/*
-  client.ws.on('INTERACTION_CREATE', async (interaction) => {
-    const command = interaction.data.name.toLowerCase();
-    const args = interaction.data.options;
-
-    if (command === 'hello') {
-      // here you could do anything. in this sample
-      // i reply with an api interaction
-      client.api.interactions(interaction.id, interaction.token).callback.post({
-        data: {
-          type: 4,
-          data: {
-            content: `hello ${interaction.member.nick}!!!`,
-          },
-        },
-      });
-    }
-  });
-
-});*/
 
 // Login to Discord with your client's token
 client.login(token);
