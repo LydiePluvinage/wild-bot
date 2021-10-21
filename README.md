@@ -3,12 +3,9 @@ git clone
 npm install
 
 How to configure :
-Create a bot following instructions on https://discordpy.readthedocs.io/en/stable/discord.html and add it to your server.
 
-Add a config.json file :
-{
-  token:'your token here';
-}
+Create a .env file with
+DJS_TOKEN="MyToken"
 
 How to start bot :
 node ./index.js
