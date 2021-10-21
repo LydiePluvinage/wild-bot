@@ -1,7 +1,6 @@
 const fs = require('fs');
 // Require the necessary discord.js classes
 const { Client, Collection, Intents } = require('discord.js');
-const { token } = require('./config.json');
 
 // Create a new client instance
 const client = new Client({
@@ -83,5 +82,6 @@ client.on('interactionCreate', async (interaction) => {
   }
 });
 
+console.log(process.env.DJS_TOKEN);
 // Login to Discord with your client's token
 client.login(process.env.DJS_TOKEN);
