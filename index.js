@@ -1,4 +1,6 @@
 const fs = require('fs');
+require('dotenv').config()
+
 // Require the necessary discord.js classes
 const { Client, Collection, Intents } = require('discord.js');
 
@@ -82,6 +84,5 @@ client.on('interactionCreate', async (interaction) => {
   }
 });
 
-console.log(process.env.DJS_TOKEN);
 // Login to Discord with your client's token
 client.login(process.env.DJS_TOKEN);
