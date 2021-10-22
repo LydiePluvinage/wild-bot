@@ -1,5 +1,5 @@
 const fs = require('fs');
-//require('dotenv').config()
+require('dotenv').config()
 
 // Require the necessary discord.js classes
 const { Client, Collection, Intents } = require('discord.js');
@@ -33,6 +33,8 @@ client.on('ready', () => {
 client.on('interactionCreate', async (interaction) => {
   if (!interaction.isCommand()) return;
 
+  console.log(interaction.member._roles);//.guild.roles.find((role)=>role.name==='Formateur'));
+
   try {
     switch (interaction.commandName) {
       case 'git':
@@ -65,7 +67,12 @@ client.on('interactionCreate', async (interaction) => {
         `);
         break;
       case 'pointage':
-        await interaction.reply('@everyone on pointe svp !');
+        if(interaction.member._roles.find((role)=> role==='885802798036434954')) {
+          await interaction.reply('@everyone on pointe svp !');
+        }
+        else{
+          throw 'Non, je ne crois pas';
+        }
         break;
       case 'remote':
         await interaction.reply(
@@ -76,9 +83,8 @@ client.on('interactionCreate', async (interaction) => {
         break;
     }
   } catch (error) {
-    console.error(error);
     return interaction.reply({
-      content: 'There was an error while executing this command!',
+      content: error,
       ephemeral: true,
     });
   }
