@@ -1,5 +1,6 @@
+const pylonJokes = require('./pylonJokes.js');
 const fs = require('fs');
-//require('dotenv').config()
+//require('dotenv').config();
 
 // Require the necessary discord.js classes
 const { Client, Collection, Intents } = require('discord.js');
@@ -83,6 +84,22 @@ client.on('interactionCreate', async (interaction) => {
     });
   }
 });
+
+client.on('messageCreate', async (msg) => {
+  const pylonWasMentionned = (msg.content.toLowerCase().includes('pylon') && (msg.member.id !== client.user.id));
+
+  if (pylonWasMentionned) {
+      try {
+          // pioche au choix dans une des blagues sur Pylon
+          const randomJoke = Math.floor(Math.random()*pylonJokes.length);
+          msg.channel.send(pylonJokes[randomJoke]);
+      } catch (err) {
+          console.warn('Failed to respond to mention.');
+          console.warn(err);
+      }
+  }
+});
+
 
 // Login to Discord with your client's token
 client.login(process.env.DJS_TOKEN);
