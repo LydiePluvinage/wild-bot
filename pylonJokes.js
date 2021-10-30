@@ -13,5 +13,6 @@ module.exports = [
     `Pylon a été codé sur WebDev`,
     `Pylon vote Zemmour, enfin c'est ce qu'on m'a dit`,
     `Pylon a un pin's de Jean Marie Le Pen`,
-    `J'avais un frère qui s'appelait Pylon, mais il a mal tourné`
+    `J'avais un frère qui s'appelait Pylon, mais il a mal tourné`,
+    `Pylon supporte le Biarritz Olympique`
   ]
