@@ -1,4 +1,6 @@
 const pylonJokes = require('./pylonJokes.js');
+const pylonDeux = require('./pylonDeux.js');
+const pylonAnswers = require('./pylonAnswers.js');
 const fs = require('fs');
 //require('dotenv').config();
 
@@ -11,6 +13,7 @@ const client = new Client({
 });
 
 client.on('ready', () => {
+  console.log('rajout des commandes');
   client.commands = new Collection();
   const commandFiles = fs
     .readdirSync('./commands')
@@ -33,8 +36,6 @@ client.on('ready', () => {
 
 client.on('interactionCreate', async (interaction) => {
   if (!interaction.isCommand()) return;
-
-  console.log(interaction.member._roles);//.guild.roles.find((role)=>role.name==='Formateur'));
 
   try {
     switch (interaction.commandName) {
@@ -92,6 +93,7 @@ client.on('interactionCreate', async (interaction) => {
 });
 
 client.on('messageCreate', async (msg) => {
+  msg.channel.send(`${msg.member.id} ${msg.member.nickname}`);
   const pylonWasMentionned = (msg.content.toLowerCase().includes('pylon') && (msg.member.id !== client.user.id));
   const unPlusUn = (msg.content.toLowerCase().includes('1+1') && (msg.member.id !== client.user.id));
 
@@ -107,7 +109,8 @@ client.on('messageCreate', async (msg) => {
   }
   else if (unPlusUn) {
     try {
-      msg.channel.send(`Ca fait 2... Mais qu'il est con`);
+      const randomJoke = Math.floor(Math.random()*pylonDeux.length);
+      msg.channel.send(pylonDeux[randomJoke]);
   } catch (err) {
       console.warn('Failed to respond to mention.');
       console.warn(err);

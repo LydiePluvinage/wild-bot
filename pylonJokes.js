@@ -1,4 +1,13 @@
 module.exports = [
+    `Vous savez la différence entre pylon et l'oxygène ? Bah on a besoin d'oxygène`,
+    `Pylon supporte le Biarritz Olympique`,
+    `Pylon a un autographe de Francis Lalanne`,
+    `Pylon n'aime pas Céline Dion`,
+    `Pylon n'a même pas de repo Github`,
+    `On peut arrêter de parler de lui ? Ca devient génant`,
+    `Windows a annoncé une mise à jour de Pylon avec la sortie de Windows 14`,
+    `Les extra-terrestres ont envahi la terre, puis ils ont rencontré Pylon. On les a jamais revus.`,
+    `Pylon porte des chaussettes avec ses sandales`,
     `Pylon ? Connais pas.`,
     `Pylon est sous ma protection ! Non, j'déconne...`,
     `Pylon, t'es comme le H de Hawaï... Tu sers à rien !`,
@@ -13,13 +22,5 @@ module.exports = [
     `Pylon a été codé sur WebDev`,
     `Pylon vote Zemmour, enfin c'est ce qu'on m'a dit`,
     `Pylon a un pin's de Jean Marie Le Pen`,
-    `J'avais un frère qui s'appelait Pylon, mais il a mal tourné`,
-    `Pylon supporte le Biarritz Olympique`,
-    `Pylon a un autographe de Francis Lalanne`,
-    `Pylon n'aime pas Céline Dion`,
-    `Pylon n'a même pas de repo Github`,
-    `On peut arrêter de parler de lui ? Ca devient génant`,
-    `Windows a annoncé une mise à jour de Pylon avec la sortie de Windows 14`,
-    `Les extra-terrestres ont envahi la terre, puis ils ont rencontré Pylon. On les a jamais revus.`,
-    `Pylon porte des chaussettes avec ses sandales`
+    `J'avais un frère qui s'appelait Pylon, mais il a mal tourné`
   ]
