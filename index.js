@@ -98,17 +98,7 @@ client.on('messageCreate', async (msg) => {
   const unPlusUn = (msg.content.toLowerCase().includes('1+1') && (msg.member.id !== client.user.id));
   const pylonSpoke = (msg.member.id === PYLON_ID);
 
-  if (pylonWasMentionned) {
-      try {
-          // pioche au choix dans une des blagues sur Pylon
-          const randomJoke = Math.floor(Math.random()*pylonJokes.length);
-          msg.channel.send(pylonJokes[randomJoke]);
-      } catch (err) {
-          console.warn('Failed to respond to mention.');
-          console.warn(err);
-      }
-  }
-  else if (pylonSpoke) {
+  if (pylonSpoke) {
     let msg = '';
     try {
       if (msg.content.toLowerCase().includes('TOP COOL LE SPAM')){
@@ -124,6 +114,16 @@ client.on('messageCreate', async (msg) => {
       console.warn('Failed to respond to mention.');
       console.warn(err);
     }    
+  }
+  else if (pylonWasMentionned) {
+      try {
+          // pioche au choix dans une des blagues sur Pylon
+          const randomJoke = Math.floor(Math.random()*pylonJokes.length);
+          msg.channel.send(pylonJokes[randomJoke]);
+      } catch (err) {
+          console.warn('Failed to respond to mention.');
+          console.warn(err);
+      }
   }
   else if (unPlusUn) {
     try {
