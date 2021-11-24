@@ -1,7 +1,11 @@
 module.exports = [
     `Vas y, me parle pas`,
     `Looser`,
-    `Dans la vie, y'a ceux qui ont une pelle et ceux qui ont un flingue. Toi, tu creuses`,
+    `Dans la vie, y'a ceux qui ont une pelle et ceux qui ont un flingue. Toi, tu creuses.`,
     `On t'a pas sonné`,
-    `Couché le bot`
+    `Couché le bot`,
+    `https://www.youtube.com/watch?v=shi6I6mkJAk`,
+    `J'ai appelé ta mère, elle vient te chercher dans 2 minutes`,
+    `C'est parceque t'es codé en javascript que t'es toujours à la ramasse ?`,
+    `Go home Pylon, you're drunk : https://i.imgur.com/i5fEkjg.gifv`
   ]

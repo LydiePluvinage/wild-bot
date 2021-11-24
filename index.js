@@ -109,10 +109,17 @@ client.on('messageCreate', async (msg) => {
       }
   }
   else if (pylonSpoke) {
+    let msg = '';
     try {
-      // pioche au choix dans une des blagues sur Pylon
-      const randomJoke = Math.floor(Math.random()*pylonAnswers.length);
-      msg.channel.send(pylonAnswers[randomJoke]);
+      if (msg.content.toLowerCase().includes('TOP COOL LE SPAM')){
+        msg(`Il se plaint du spam et on entend que lui !!`);
+      } else {
+        // pioche au choix dans une des blagues sur Pylon            
+        const randomJoke = Math.floor(Math.random()*pylonAnswers.length);
+        msg = pylonAnswers[randomJoke];
+      }
+  
+      msg.channel.send(msg);
     } catch (err) {
       console.warn('Failed to respond to mention.');
       console.warn(err);
