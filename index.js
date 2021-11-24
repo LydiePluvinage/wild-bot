@@ -96,7 +96,7 @@ client.on('messageCreate', async (msg) => {
   const PYLON_ID= '270148059269300224';
   const pylonWasMentionned = (msg.content.toLowerCase().includes('pylon') && (msg.member.id !== client.user.id));
   const unPlusUn = (msg.content.toLowerCase().includes('1+1') && (msg.member.id !== client.user.id));
-  const pylonSpoke = (msg.member.id === PYLON_ID);
+  const pylonSpoke = (msg.member.id === PYLON_ID && msg.content.toLowerCase().includes('r2'));
 
   if (pylonWasMentionned) {
       try {
