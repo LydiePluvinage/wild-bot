@@ -97,7 +97,7 @@ client.on('messageCreate', async (msg) => {
   const pylonWasMentionned = (msg.content.toLowerCase().includes('pylon') && (msg.member.id !== client.user.id));
   const unPlusUn = (msg.content.toLowerCase().includes('1+1') && (msg.member.id !== client.user.id));
   const pylonSpoke = (msg.member.id === PYLON_ID);
-  
+
   if (pylonWasMentionned) {
       try {
           // pioche au choix dans une des blagues sur Pylon
@@ -107,6 +107,16 @@ client.on('messageCreate', async (msg) => {
           console.warn('Failed to respond to mention.');
           console.warn(err);
       }
+  }
+  else if (pylonSpoke) {
+    try {
+      // pioche au choix dans une des blagues sur Pylon
+      const randomJoke = Math.floor(Math.random()*pylonAnswers.length);
+      msg.channel.send(pylonAnswers[randomJoke]);
+    } catch (err) {
+      console.warn('Failed to respond to mention.');
+      console.warn(err);
+    }    
   }
   else if (unPlusUn) {
     try {
