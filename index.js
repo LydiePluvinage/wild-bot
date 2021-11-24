@@ -93,6 +93,7 @@ client.on('interactionCreate', async (interaction) => {
 
 client.on('messageCreate', async (msg) => {
   const pylonWasMentionned = (msg.content.toLowerCase().includes('pylon') && (msg.member.id !== client.user.id));
+  const unPlusUn = (msg.content.toLowerCase().includes('1+1') && (msg.member.id !== client.user.id));
 
   if (pylonWasMentionned) {
       try {
@@ -103,6 +104,14 @@ client.on('messageCreate', async (msg) => {
           console.warn('Failed to respond to mention.');
           console.warn(err);
       }
+  }
+  else if (unPlusUn) {
+    try {
+      msg.channel.send(`Ca fait 2... Mais qu'il est con`);
+  } catch (err) {
+      console.warn('Failed to respond to mention.');
+      console.warn(err);
+  }   
   }
 });
 
