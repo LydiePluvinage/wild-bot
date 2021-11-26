@@ -94,24 +94,25 @@ client.on('interactionCreate', async (interaction) => {
 
 client.on('messageCreate', async (msg) => {
   const PYLON_ID= '270148059269300224';
+
   const pylonWasMentionned = (msg.content.toLowerCase().includes('pylon') && (msg.member.id !== client.user.id));
   const unPlusUn = (msg.content.toLowerCase().includes('1+1') && (msg.member.id !== client.user.id));
   const pylonSpoke = (msg.member.id === PYLON_ID);
 
   if (pylonSpoke) {
-    let msg = '';
+    let message = '';
     try {
-      if (msg.content.toLowerCase().includes('TOP COOL LE SPAM')){
-        msg(`Il se plaint du spam et on entend que lui !!`);
+      if (msg.content.toLowerCase().includes('trop cool le spam')){
+        message  =`Il se plaint du spam et on entend que lui !!`;
       } else if (msg.content.toLowerCase().includes('r2')) {
         // pioche au choix dans une des blagues sur Pylon            
         const randomJoke = Math.floor(Math.random()*pylonAnswers.length);
-        msg = pylonAnswers[randomJoke];
+        message = pylonAnswers[randomJoke];
       }
   
-      msg.channel.send(msg);
+      if (message !== '') msg.channel.send(message);
     } catch (err) {
-      console.warn('Failed to respond to mention.');
+      console.warn('Failed to respond to mention r2.');
       console.warn(err);
     }    
   }
@@ -121,7 +122,7 @@ client.on('messageCreate', async (msg) => {
           const randomJoke = Math.floor(Math.random()*pylonJokes.length);
           msg.channel.send(pylonJokes[randomJoke]);
       } catch (err) {
-          console.warn('Failed to respond to mention.');
+          console.warn('Failed to respond to mention pylon.');
           console.warn(err);
       }
   }
@@ -129,10 +130,10 @@ client.on('messageCreate', async (msg) => {
     try {
       const randomJoke = Math.floor(Math.random()*pylonDeux.length);
       msg.channel.send(pylonDeux[randomJoke]);
-  } catch (err) {
-      console.warn('Failed to respond to mention.');
+    } catch (err) {
+      console.warn('Failed to respond to mention 1+1.');
       console.warn(err);
-  }   
+    }   
   }
 });
 

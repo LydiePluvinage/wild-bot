@@ -7,5 +7,6 @@ module.exports = [
     `https://www.youtube.com/watch?v=shi6I6mkJAk`,
     `J'ai appelé ta mère, elle vient te chercher dans 2 minutes`,
     `C'est parceque t'es codé en javascript que t'es toujours à la ramasse ?`,
-    `Go home Pylon, you're drunk : https://i.imgur.com/i5fEkjg.gifv`
+    `Go home Pylon, you're drunk : https://i.imgur.com/i5fEkjg.gifv`,
+    'Et ta soeur, elle sait coder ?'
   ]
