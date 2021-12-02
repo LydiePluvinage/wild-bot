@@ -94,17 +94,22 @@ client.on('interactionCreate', async (interaction) => {
 
 client.on('messageCreate', async (msg) => {
   const PYLON_ID= '270148059269300224';
+  const JOSEPH_ID = '814818053635702784';
+  const LYDIE_ID = '182990141889970176';
 
+  const r2WasTagged = msg.content.toLowerCase().includes(`<@${PYLON_ID}>`);
   const pylonWasMentionned = (msg.content.toLowerCase().includes('pylon') && (msg.member.id !== client.user.id));
   const unPlusUn = (msg.content.toLowerCase().includes('1+1') && (msg.member.id !== client.user.id));
-  const pylonSpoke = (msg.member.id === PYLON_ID);
+  const pylonSpoke = (msg.member.id === PYLON_ID) || (msg.member.id === JOSEPH_ID) ;
+  const lydieSpoke = (msg.member.id === LYDIE_ID) &&  (msg.content.toLowerCase().includes('r2') || r2WasTagged ) ;
 
   if (pylonSpoke) {
     let message = '';
     try {
+      
       if (msg.content.toLowerCase().includes('trop cool le spam')){
         message  =`Il se plaint du spam et on entend que lui !!`;
-      } else if (msg.content.toLowerCase().includes('r2')) {
+      } else if (msg.content.toLowerCase().includes('r2') || r2WasTagged) {
         // pioche au choix dans une des blagues sur Pylon            
         const randomJoke = Math.floor(Math.random()*pylonAnswers.length);
         message = pylonAnswers[randomJoke];
@@ -115,6 +120,9 @@ client.on('messageCreate', async (msg) => {
       console.warn('Failed to respond to mention r2.');
       console.warn(err);
     }    
+  }
+  else if (lydieSpoke){
+    msg.channel.send('Oui ?');
   }
   else if (pylonWasMentionned) {
       try {
