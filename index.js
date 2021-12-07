@@ -1,6 +1,7 @@
 const pylonJokes = require("./pylonJokes.js");
 const pylonDeux = require("./pylonDeux.js");
 const pylonAnswers = require("./pylonAnswers.js");
+const pylonAttacks = require("./pylonAttacks.js");
 const fs = require("fs");
 //require("dotenv").config();
 
@@ -133,8 +134,10 @@ client.on("messageCreate", async (msg) => {
       console.warn("Failed to respond to mention r2.");
       console.warn(err);
     }
-  } else if (lydieSpoke) {
-    msg.channel.send("Oui ?");
+  } else if (lydieSpoke && msg.content.toLowerCase().includes("attaque")) {
+    // pioche au choix dans une des blagues sur Pylon
+    const randomJoke = Math.floor(Math.random() * pylonAttacks.length);
+    msg.channel.send(pylonAttacks[randomJoke]);
   } else if (pylonWasMentionned) {
     try {
       // pioche au choix dans une des blagues sur Pylon

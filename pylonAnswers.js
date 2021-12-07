@@ -9,13 +9,6 @@ module.exports = [
   `C'est parceque t'es codé en javascript que t'es toujours à la ramasse ?`,
   `Go home Pylon, you're drunk : https://i.imgur.com/i5fEkjg.gifv`,
   `Et ta soeur, elle sait coder ?`,
-  `Tu vas te retrouver seul en projet 3 si tu continues`,
   `Qui t'a invité d'ailleurs ?`,
   `Tu sens aussi mauvais de la bouche que Kaïko, mais t'es plus moche`,
-  `Pylon a trouvé un boulot chez OVH : https://tenor.com/view/ai-robot-fail-clumsy-robot-gif-11992490`,
-  `Pylon s'est mis au parkour : https://c.tenor.com/PiJ_nW6EDjEAAAAd/robot-fail.gif`,
-  `Pylon s'entraine pour la prochaine coupe du monde : https://c.tenor.com/he3xJKHKajUAAAAS/robot-soccer.gif`,
-  `Pylon et les escaliers : https://c.tenor.com/z0rwZrP0ylwAAAAd/elize-ryd-amaranthe.gif`,
-  `Pylon a adopté un chien : https://c.tenor.com/PtlzsrC0csgAAAAd/banana-peel-robot.gif`,
-  `Pylon babysitter : https://tenor.com/view/baby-bottle-self-feeder-invention-gif-9983171`,
 ];
