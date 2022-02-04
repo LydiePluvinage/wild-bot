@@ -1,30 +1,30 @@
-const pylonJokes = require("./pylonJokes.js");
-const pylonDeux = require("./pylonDeux.js");
-const pylonAnswers = require("./pylonAnswers.js");
-const pylonAttacks = require("./pylonAttacks.js");
-const fs = require("fs");
+const pylonJokes = require('./pylonJokes.js');
+const pylonDeux = require('./pylonDeux.js');
+const pylonAnswers = require('./pylonAnswers.js');
+const pylonAttacks = require('./pylonAttacks.js');
+const fs = require('fs');
 //require("dotenv").config();
 
 // Require the necessary discord.js classes
-const { Client, Collection, Intents } = require("discord.js");
+const { Client, Collection, Intents } = require('discord.js');
 
 // Create a new client instance
 const client = new Client({
   intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
 });
 
-client.on("ready", () => {
-  console.log("rajout des commandes");
+client.on('ready', () => {
+  console.log('rajout des commandes');
   client.commands = new Collection();
   const commandFiles = fs
-    .readdirSync("./commands")
-    .filter((file) => file.endsWith(".js"));
+    .readdirSync('./commands')
+    .filter((file) => file.endsWith('.js'));
 
   for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
     client.api
       .applications(client.user.id)
-      .guilds("885798729859358742")
+      .guilds('885798729859358742')
       .commands.post({
         data: {
           name: command.name,
@@ -35,12 +35,12 @@ client.on("ready", () => {
   }
 });
 
-client.on("interactionCreate", async (interaction) => {
+client.on('interactionCreate', async (interaction) => {
   if (!interaction.isCommand()) return;
 
   try {
     switch (interaction.commandName) {
-      case "git":
+      case 'git':
         await interaction.reply(`Voici les principales commandes git :\n
         **git init** : Indique à git que ce dossier va être suivi. Utile uniquement à la création d'un nouveau projet
         **git remote add origin *chemin*** : Lie un dossier à un repository git. Utile uniquement à la création d'un nouveau projet ou lors de recréation de repo
@@ -57,7 +57,7 @@ client.on("interactionCreate", async (interaction) => {
         Pour en savoir plus : **https://www.atlassian.com/dam/jcr:e7e22f25-bba2-4ef1-a197-53f46b6df4a5/SWTM-2088_Atlassian-Git-Cheatsheet.pdf**
         `);
         break;
-      case "npm":
+      case 'npm':
         await interaction.reply(`Voici les principales commandes NPM :\n
         **npm init** : Initialise le projet. Génère le package.json
         **npm install** : Installe les dépendances du projet. Génère le dossier node_modules. A faire après chaque git clone
@@ -69,20 +69,20 @@ client.on("interactionCreate", async (interaction) => {
         Pour en savoir plus : **https://devhints.io/npm**
         `);
         break;
-      case "pointage":
+      case 'pointage':
         if (
           interaction.member._roles.find(
-            (role) => role === "885802798036434954"
+            (role) => role === '885802798036434954'
           )
         ) {
-          await interaction.reply("@everyone on pointe svp !");
+          await interaction.reply('@wilder on pointe svp !');
         } else {
-          throw "Non, je ne crois pas";
+          throw 'Non, je ne crois pas';
         }
         break;
-      case "remote":
+      case 'remote':
         await interaction.reply(
-          "Voici le lien pour le remote : https://meet.google.com/jjn-kvnb-nrc?authuser=0"
+          'Voici le lien pour le remote : https://meet.google.com/jjn-kvnb-nrc?authuser=0'
         );
         break;
       default:
@@ -96,45 +96,45 @@ client.on("interactionCreate", async (interaction) => {
   }
 });
 
-client.on("messageCreate", async (msg) => {
-  const PYLON_ID = "270148059269300224";
-  const JOSEPH_ID = "814818053635702784";
-  const LYDIE_ID = "182990141889970176";
+client.on('messageCreate', async (msg) => {
+  const PYLON_ID = '270148059269300224';
+  const JOSEPH_ID = '814818053635702784';
+  const LYDIE_ID = '182990141889970176';
 
   const r2WasTagged = msg.content.toLowerCase().includes(`<@${PYLON_ID}>`);
   const pylonWasMentionned =
-    msg.content.toLowerCase().includes("pylon") &&
+    msg.content.toLowerCase().includes('pylon') &&
     msg.member.id !== client.user.id;
   const unPlusUn =
-    msg.content.toLowerCase().includes("1+1") &&
+    msg.content.toLowerCase().includes('1+1') &&
     msg.member.id !== client.user.id;
   const pylonSpoke = msg.member.id === PYLON_ID || msg.member.id === JOSEPH_ID;
   const lydieSpoke =
     msg.member.id === LYDIE_ID &&
-    (msg.content.toLowerCase().includes("r2") || r2WasTagged);
-  const hipHipHip = msg.content.toLowerCase().includes("hip");
+    (msg.content.toLowerCase().includes('r2') || r2WasTagged);
+  const hipHipHip = msg.content.toLowerCase().includes('hip');
 
   if (hipHipHip) {
     msg.channel.send(
-      "https://www.photofunky.net/output/image/e/1/d/f/e1df7c/photofunky.gif"
+      'https://www.photofunky.net/output/image/e/1/d/f/e1df7c/photofunky.gif'
     );
   } else if (pylonSpoke) {
-    let message = "";
+    let message = '';
     try {
-      if (msg.content.toLowerCase().includes("trop cool le spam")) {
+      if (msg.content.toLowerCase().includes('trop cool le spam')) {
         message = `Il se plaint du spam et on entend que lui !!`;
-      } else if (msg.content.toLowerCase().includes("r2") || r2WasTagged) {
+      } else if (msg.content.toLowerCase().includes('r2') || r2WasTagged) {
         // pioche au choix dans une des blagues sur Pylon
         const randomJoke = Math.floor(Math.random() * pylonAnswers.length);
         message = pylonAnswers[randomJoke];
       }
 
-      if (message !== "") msg.channel.send(message);
+      if (message !== '') msg.channel.send(message);
     } catch (err) {
-      console.warn("Failed to respond to mention r2.");
+      console.warn('Failed to respond to mention r2.');
       console.warn(err);
     }
-  } else if (lydieSpoke && msg.content.toLowerCase().includes("attaque")) {
+  } else if (lydieSpoke && msg.content.toLowerCase().includes('attaque')) {
     // pioche au choix dans une des blagues sur Pylon
     const randomJoke = Math.floor(Math.random() * pylonAttacks.length);
     msg.channel.send(pylonAttacks[randomJoke]);
@@ -144,7 +144,7 @@ client.on("messageCreate", async (msg) => {
       const randomJoke = Math.floor(Math.random() * pylonJokes.length);
       msg.channel.send(pylonJokes[randomJoke]);
     } catch (err) {
-      console.warn("Failed to respond to mention pylon.");
+      console.warn('Failed to respond to mention pylon.');
       console.warn(err);
     }
   } else if (unPlusUn) {
@@ -152,7 +152,7 @@ client.on("messageCreate", async (msg) => {
       const randomJoke = Math.floor(Math.random() * pylonDeux.length);
       msg.channel.send(pylonDeux[randomJoke]);
     } catch (err) {
-      console.warn("Failed to respond to mention 1+1.");
+      console.warn('Failed to respond to mention 1+1.');
       console.warn(err);
     }
   }
