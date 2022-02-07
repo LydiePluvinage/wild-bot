@@ -75,7 +75,7 @@ client.on('interactionCreate', async (interaction) => {
             (role) => role === '885802798036434954'
           )
         ) {
-          await interaction.reply('@wilder on pointe svp !');
+          await interaction.reply('<@&929044854720315513> on pointe svp !');
         } else {
           throw 'Non, je ne crois pas';
         }
