@@ -3,7 +3,7 @@ const pylonDeux = require('./pylonDeux.js');
 const pylonAnswers = require('./pylonAnswers.js');
 const pylonAttacks = require('./pylonAttacks.js');
 const fs = require('fs');
-//require("dotenv").config();
+// require("dotenv").config();
 
 // Require the necessary discord.js classes
 const { Client, Collection, Intents } = require('discord.js');
@@ -13,6 +13,10 @@ const client = new Client({
   intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
 });
 
+// List of servers
+const servers = ['885798729859358742','945259132045365288'];
+                  // sept 2021          mars 2022
+
 client.on('ready', () => {
   console.log('rajout des commandes');
   client.commands = new Collection();
@@ -20,18 +24,20 @@ client.on('ready', () => {
     .readdirSync('./commands')
     .filter((file) => file.endsWith('.js'));
 
-  for (const file of commandFiles) {
-    const command = require(`./commands/${file}`);
-    client.api
-      .applications(client.user.id)
-      .guilds('885798729859358742')
-      .commands.post({
-        data: {
-          name: command.name,
-          description: command.description,
-        },
-      });
-    console.log(`${command.name} ajouté`);
+  for (const server of servers) {
+    for (const file of commandFiles) {
+      const command = require(`./commands/${file}`);
+      client.api
+        .applications(client.user.id)
+        .guilds(server)
+        .commands.post({
+          data: {
+            name: command.name,
+            description: command.description,
+          },
+        });
+      console.log(`${command.name} ajouté`);
+    }
   }
 });
 
@@ -72,10 +78,10 @@ client.on('interactionCreate', async (interaction) => {
       case 'pointage':
         if (
           interaction.member._roles.find(
-            (role) => role === '885802798036434954'
+            (role) => role === '885802798036434954' || role === '945262201634193520'
           )
         ) {
-          await interaction.reply('<@&929044854720315513> on pointe svp !');
+          await interaction.reply('<@&945262136228188181> on pointe svp !');
         } else {
           throw 'Non, je ne crois pas';
         }
@@ -100,6 +106,7 @@ client.on('messageCreate', async (msg) => {
   const PYLON_ID = '270148059269300224';
   const JOSEPH_ID = '814818053635702784';
   const LYDIE_ID = '182990141889970176';
+  const JIMMY_ID= '886911555344670720';
 
   const r2WasTagged = msg.content.toLowerCase().includes(`<@${PYLON_ID}>`);
   const pylonWasMentionned =
