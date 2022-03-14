@@ -2,11 +2,13 @@ const pylonJokes = require("./pylonJokes.js");
 const pylonDeux = require("./pylonDeux.js");
 const pylonAnswers = require("./pylonAnswers.js");
 const pylonAttacks = require("./pylonAttacks.js");
+const axios = require("axios");
+const moment = require("moment"); // require
 const fs = require("fs");
 // require("dotenv").config();
 
 // Require the necessary discord.js classes
-const { Client, Collection, Intents } = require("discord.js");
+const { Client, Collection, Intents, MessageEmbed } = require("discord.js");
 
 // Create a new client instance
 const client = new Client({
@@ -99,14 +101,55 @@ client.on("interactionCreate", async (interaction) => {
             soit par Virement http://lydiepluvinage.fr/RIB.pdf`
         );
         break;
+      case "meteo":
+        await interaction.reply("Récupération des infos météo");
+        axios
+          .get(
+            `https://api.meteo-concept.com/api/forecast/daily?insee=64024&token=${process.env.API_TOKEN}`
+          )
+          .then(async (meteoList) => {
+            console.log(meteoList);
+            await interaction.editReply(
+              `Voici la météo à 3 jours :
+              ${moment().format("DD/MM/YYYY")} : Températures (min-max) : ${
+                meteoList.data.forecast[0].tmin
+              }° - ${meteoList.data.forecast[0].tmax}°. Il va pleuvoir à ${
+                meteoList.data.forecast[0].probarain
+              }% et le vent sera de ${meteoList.data.forecast[0].wind10m}km/h.
+              ${moment()
+                .add(1, "days")
+                .format("DD/MM/YYYY")} : Températures (min-max) : ${
+                meteoList.data.forecast[1].tmin
+              }° - ${meteoList.data.forecast[1].tmax}°. Il va pleuvoir à ${
+                meteoList.data.forecast[1].probarain
+              }% et le vent sera de ${meteoList.data.forecast[1].wind10m}km/h
+              ${moment()
+                .add(2, "days")
+                .format("DD/MM/YYYY")} : Températures (min-max) : ${
+                meteoList.data.forecast[2].tmin
+              }° - ${meteoList.data.forecast[2].tmax}°. Il va pleuvoir à ${
+                meteoList.data.forecast[2].probarain
+              }% et le vent sera de ${meteoList.data.forecast[2].wind10m}km/h`
+            );
+          });
+
+        break;
       default:
         break;
     }
   } catch (error) {
-    return interaction.reply({
-      content: error,
-      ephemeral: true,
-    });
+    console.log(error);
+    if (interaction.deferred) {
+      return interaction.editReply({
+        content: error,
+        ephemeral: true,
+      });
+    } else {
+      return interaction.reply({
+        content: error,
+        ephemeral: true,
+      });
+    }
   }
 });
 
