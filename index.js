@@ -42,7 +42,7 @@ client.on("ready", () => {
             options: command.options,
           },
         });
-      console.log(`${command.name} ajouté`);
+      console.log(`${command.name} ajoutée`);
     }
   }
 });
