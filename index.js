@@ -138,6 +138,7 @@ client.on("interactionCreate", async (interaction) => {
           });
 
         break;
+
       case "horoscope":
         const horoscopeUrl = "https://www.20minutes.fr/horoscope/";
 
