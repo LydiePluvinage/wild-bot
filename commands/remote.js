@@ -1,6 +1,7 @@
-const { SlashCommandBuilder } = require('@discordjs/builders');
+const { SlashCommandBuilder } = require("@discordjs/builders");
 
 module.exports = {
-  name: 'remote',
-  description: 'Donne le lien du meet pour le remote',
+  name: "remote",
+  description: "Donne le lien du meet pour le remote",
+  options: [],
 };
