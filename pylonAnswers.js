@@ -1,4 +1,4 @@
-module.exports = [
+export default [
   `Vas y, me parle pas`,
   `Looser`,
   `Dans la vie, y'a ceux qui ont une pelle et ceux qui ont un flingue. Toi, tu creuses.`,
