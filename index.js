@@ -9,8 +9,8 @@ import got from 'got';
 import { JSDOM } from 'jsdom';
 import commands from './commands/index.js';
 
-import dotenv from 'dotenv';
-dotenv.config();
+// import dotenv from 'dotenv';
+// dotenv.config();
 
 // Require the necessary discord.js classes
 import { Client, Collection, Intents } from 'discord.js';
